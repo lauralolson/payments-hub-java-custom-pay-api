@@ -21,12 +21,13 @@ public class CustomPayController {
     @PostMapping(path = "/pay")
     public static String pay(@org.springframework.web.bind.annotation.RequestBody JSONObject inputBody) throws NoSuchAlgorithmException, InvalidKeyException {
 
-        //  Extracting user input
+        // 1. Extract user input
         String cardNumber = inputBody.get("cardNumber").toString();
         String CVV = inputBody.get("CVV").toString();
         String cardExpiryDate = inputBody.get("cardExpiryDate").toString();
         String amount = inputBody.get("amount").toString();
 
+        // 2. Define other payment-related parameters
         String cardEntryMethod = "X";                               // To denote that the card was keyed in manually
         String industryType = "E";                                  // To denote an ecommerce transaction
         boolean capture = true;                                     // To authorize and capture payment in the same go
@@ -36,7 +37,7 @@ public class CustomPayController {
         String baseUrl = "https://epi.epxuap.com";                  // From Payments Hub docs
         String endpoint = "/sale";                                  // From Payments Hub docs
 
-        // Defining headers and body contents
+        // 3. Define request headers and body contents
         String contentType = "application/json";
         Double transactionId = Math.random();
         String orderNumber = String.valueOf(Math.random());
@@ -56,16 +57,16 @@ public class CustomPayController {
         bodyJSON.put("batchID", batchId);
 
 
-        // Creating signature from epiKey, endpoint, and body
+        // 4. Create signature from epiKey, endpoint, and body
         String signature = createSignature(endpoint, bodyJSON.toJSONString(), epiKey);
 
-        // Preparing body to send with request
+        // 5. Prepare body to send with request
         RequestBody body = RequestBody.create(
                 bodyJSON.toJSONString(),
                 MediaType.parse("application/json; charset=utf-8")
         );
 
-        // Building the request with correct headers and body content
+        // 6. Build the request with correct headers and body content
         Request request = new Request.Builder()
                 .url(baseUrl + endpoint)
                 .addHeader("Content-Type", contentType)
@@ -74,7 +75,7 @@ public class CustomPayController {
                 .post(body)
                 .build();
 
-        // Sending the request
+        // 7. Send the request and handle the response
         try (Response response = httpClient.newCall(request).execute()) {
 
             // Handling failure
