@@ -29,7 +29,7 @@ public class CustomPayController {
 
         // 2. Define other payment-related parameters
         String cardEntryMethod = "X";                               // To denote that the card was keyed in manually
-        String industryType = "E";                                  // To denote an ecommerce transaction
+        String industryType = "E";                                  // To denote an e-commerce transaction
         boolean capture = true;                                     // To authorize and capture payment in the same go
 
         String epiId = "XXXX-XXXXXX-X-X";                           // From your Payments Hub account
