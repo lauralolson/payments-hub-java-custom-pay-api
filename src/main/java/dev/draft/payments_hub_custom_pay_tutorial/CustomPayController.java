@@ -37,7 +37,7 @@ public class CustomPayController {
         String baseUrl = "https://epi.epxuap.com";                  // From Payments Hub docs
         String endpoint = "/sale";                                  // From Payments Hub docs
 
-        // 3. Define request headers and body contents
+        // 3. Define request headers and body content
         String contentType = "application/json";
         Double transactionId = Math.random();
         String orderNumber = String.valueOf(Math.random());
@@ -96,7 +96,7 @@ public class CustomPayController {
 
     }
 
-    // Creating signature using the Hmac SHA 256 algorithm from endpoint + payload and epiKey
+    // Create signature using the HMAC-SHA-256 algorithm from endpoint + payload and epiKey
     public static String createSignature(String endpoint, String payload, String epiKey) throws NoSuchAlgorithmException, InvalidKeyException {
         String algorithm = "HmacSHA256";
         SecretKeySpec secretKeySpec = new SecretKeySpec(epiKey.getBytes(), algorithm);
