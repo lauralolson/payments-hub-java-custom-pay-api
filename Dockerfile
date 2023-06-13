@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM eclipse-temurin:1.8
+FROM eclipse-temurin:1.8-jdk
 
 COPY .mvn/ .mvn
 COPY mvnw pom.xml ./
