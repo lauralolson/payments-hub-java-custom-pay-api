@@ -32,8 +32,8 @@ public class CustomPayController {
         String industryType = "E";                                  // To denote an e-commerce transaction
         boolean capture = true;                                     // To authorize and capture payment in the same go
 
-        String epiId = "XXXX-XXXXXX-X-X";                           // From your Payments Hub account
-        String epiKey = "8XXXXXXXXXXXXXXXX05XXXXXXXXXXX31";         // From your Payments Hub account
+        String epiId = "9001-900300-2-6";                           // From your Payments Hub account
+        String epiKey = "8EEDC66DF02D7803E05321281FAC8C31";         // From your Payments Hub account
         String baseUrl = "https://epi.epxuap.com";                  // From Payments Hub docs
         String endpoint = "/sale";                                  // From Payments Hub docs
 
