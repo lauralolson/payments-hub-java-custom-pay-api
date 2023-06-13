@@ -1,6 +1,9 @@
 # syntax=docker/dockerfile:1
 
-FROM eclipse-temurin:1.8-jdk
+FROM alpine:3.18
+
+ENV JAVA_HOME /opt/java/openjdk
+ENV PATH $JAVA_HOME/bin:$PATH
 
 COPY .mvn/ .mvn
 COPY mvnw pom.xml ./
