@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM java:20
+FROM java:1.8
 
 WORKDIR /app
 
