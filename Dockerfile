@@ -8,6 +8,8 @@ ENV PATH $JAVA_HOME/bin:$PATH
 COPY .mvn/ .mvn
 COPY mvnw pom.xml ./
 
+RUN ./mvnw dependency:resolve
+
 COPY src ./src
 
-CMD ["mvnw", "spring-boot:run"]
+CMD ["./mvnw", "spring-boot:run"]
